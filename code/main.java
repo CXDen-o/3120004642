@@ -11,36 +11,8 @@ public class main {
         String ans=args[2];
         ArrayList<String> aor = new ArrayList<>();
         ArrayList<String> aad = new ArrayList<>();
-        try (
-            FileReader reader1 = new FileReader(org);
-            BufferedReader br = new BufferedReader(reader1);
-            ){
-            String line;
-            while ((line = br.readLine())!=null ){
-                String[] or = line.split("");
-                for(int i=0;i< or.length;i++){
-                    aor.add(or[i]);
-                }
-            }
-
-        } catch (IOException e) {
-                    e.printStackTrace();
-                }
-        try (
-                FileReader reader2 = new FileReader(add);
-                BufferedReader br = new BufferedReader(reader2);
-        ){
-            String line;
-            while ((line = br.readLine())!=null ){
-                String[] ad = line.split("");
-                for(int i=0;i< ad.length;i++){
-                    aad.add(ad[i]);
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        write(org,aor);
+        write(add,aad);
         for (int i=0;i< aor.size();i++)
             System.out.println(aor.get(i));
         for (int i=0;i< aad.size();i++)
@@ -72,5 +44,23 @@ public class main {
             e.printStackTrace();
         }
 
+    }
+
+    public static void write(String txt , ArrayList<String> tx){
+        try (
+                FileReader reader1 = new FileReader(txt);
+                BufferedReader br = new BufferedReader(reader1);
+        ){
+            String line;
+            while ((line = br.readLine())!=null ){
+                String[] or = line.split("");
+                for(int i=0;i< or.length;i++){
+                    tx.add(or[i]);
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
